@@ -14,7 +14,7 @@ namespace NotelyApp.Models
         public string Detail { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime LastModified { get; set; }
-        public bool isDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }
