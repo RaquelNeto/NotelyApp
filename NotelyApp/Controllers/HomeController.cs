@@ -1,22 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using NotelyApp.Models;
-using NotelyApp.Repositories;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using NotelyApp.Models;
 using NotelyApp.Repositories;
-
 
 namespace NotelyApp.Controllers
 {
     public class HomeController : Controller
     {
         private readonly INoteRepository _noteRepository;
-
         public HomeController(INoteRepository noteRepository)
         {
             _noteRepository = noteRepository;
@@ -25,7 +18,8 @@ namespace NotelyApp.Controllers
         public IActionResult Index()
         {
             var notes = _noteRepository.GetAllNotes().Where(n => n.IsDeleted == false);
-            return View();
+
+            return View(notes);
         }
 
         public IActionResult NoteDetail(Guid id)
@@ -102,3 +96,4 @@ namespace NotelyApp.Controllers
         }
     }
 }
+
